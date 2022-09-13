@@ -1,22 +1,15 @@
-include"main.h"
+#include"main.h"
 
 /**
- *  * main - Entry point
- *   *
- *    * Description: prints _putchar using putchar prototype
- *     *
- *      * Return: Always 0 (Success)
- *      */
+ *  * print_alphabet - utilizes on the _putchar function to print
+ *   *                 the alphabet a - z
+ *   */
 
-int main(void)
+void print_alphabet(void)
 {
-		char str[] = "_putchar";
-			int ch;
+		int ch;
 
-				for (ch = 0; ch < 8; ++ch)
-							_putchar(str[ch]);
-					_putchar('\n');
-
-						return (0);
+			for (ch = 'a'; ch <= 'z'; ++ch)
+						_putchar(ch);
+				_putchar('\n');
 }
-
