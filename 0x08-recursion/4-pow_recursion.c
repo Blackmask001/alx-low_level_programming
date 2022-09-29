@@ -1,45 +1,27 @@
 /**
- * _sqrt_recursion_wrapper - a wrapper that does the recursion bit
+ * _pow_recursion - a function that returns the power of @x by @y x^y
  *
- * @n : input number
- * @min: minimum number to guess
- * @max: maximum number to guess
+ * Description: this method is good for speed, check this youtube video
+ *   https://youtu.be/wAyrtLAeWvI?list=PL2_aWCzGMAwLz3g66WrxFGSXvSsvyfzCO
  *
- * Return: square root of @n or -1
+ * @x: integer x
+ * @y: integer y
+ *
+ * Return: the power of @x by @y
 */
-int _sqrt_recursion_wrapper(int n, int min, int max)
+int _pow_recursion(int x, int y)
 {
-	int guess, guess_squared;
+	int even;
 
-	guess = (min + max) / 2;		/*get guess (g)*/
-	guess_squared = guess * guess;		/*square guess (sg)*/
-
-	if (guess_squared == n)			/*if squared guess == n return guess*/
-		return (guess);
-	else if (min == max)			/*this means n doesn't have a perfect square*/
+	if (y < 0)		/*if y is a negative number, return -1*/
 		return (-1);
-	else if (guess_squared < n)		/*overshoot g if sg is less than the n*/
-		return (_sqrt_recursion_wrapper(n, guess + 1, max));
-	else					/*undershoot g if sg is more than the n*/
-		return (_sqrt_recursion_wrapper(n, min, guess - 1));
-}
-
-/**
- * _sqrt_recursion - a function that returns the natural
- *                   square root of a number
- *
- * @n: input number
- *
- * Return: square root
-*/
-int _sqrt_recursion(int n)
-{
-	if (n == 1)		/*sqrt(1) == 1*/
+	else if (y == 0)	/*x to the power of 0 is 1*/
 		return (1);
-	else if (n == 0)	/*sqrt(0) == 0*/
-		return (0);
-	else if (n < 0)		/*sqrt(-n) == -1 (NA)*/
-		return (-1);
-	else
-		return (_sqrt_recursion_wrapper(n, 1, n));
+	else if (y % 2 == 0)	/*if y is an even number*/
+	{
+		even = _pow_recursion(x, y / 2);
+		return (even * even);
+	}
+	else			/*if y is odd*/
+		return (x * _pow_recursion(x, y - 1));
 }
