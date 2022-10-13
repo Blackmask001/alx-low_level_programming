@@ -1,0 +1,1 @@
+fuctions on pointers
